@@ -6,7 +6,7 @@ EXTRA_ARG_BLACK=$2
 echo -e "\033[1m\nRunning Format and checks on ${FILE}\033[0m"
 
 echo -e "\033[1m\nRunning Black...\033[0m"
-pipenv run black "$FILE"
+pipenv run black --line-length=79  "$FILE"
 
 echo -e "\033[1m\nRunning MyPy...\033[0m"
 pipenv run mypy "$FILE"

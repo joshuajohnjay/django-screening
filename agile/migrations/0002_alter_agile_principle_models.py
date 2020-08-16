@@ -23,7 +23,9 @@ def move_principles_data(apps, schema_editor):
     TYPE_PRINCIPLE = "principle"
     for principle in Principle.objects.all():
         Agile.objects.create(
-            name=principle.name, description=principle.description, type=TYPE_PRINCIPLE,
+            name=principle.name,
+            description=principle.description,
+            type=TYPE_PRINCIPLE,
         )
 
 
