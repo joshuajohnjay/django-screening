@@ -23,7 +23,7 @@ class AgileManager(models.Manager):
 
 class Agile(models.Model):
 
-    TYPE_VALUE = 'value'
+    TYPE_VALUE = "value"
     TYPE_PRINCIPLE = "principle"
     AGILE_TYPES_CHOICES = (
         (TYPE_VALUE, "Value"),
@@ -41,12 +41,14 @@ class Agile(models.Model):
     )
 
     creation_date = models.DateTimeField(_("date created"), auto_now_add=True)
-    modified_date = models.DateTimeField(_("date last modified"), auto_now=True)
+    modified_date = models.DateTimeField(
+        _("date last modified"), auto_now=True
+    )
 
     objects = AgileManager()
 
     class Meta:
         verbose_name_plural = _("Agile Values and Principles")
 
-    def __str__(self) -> bool:
+    def __str__(self) -> str:
         return f"{self.type}: {self.name}"

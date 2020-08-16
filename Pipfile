@@ -13,7 +13,6 @@ pytest-django = "*"
 django = "*"
 djangorestframework = "*"
 drf-yasg = "*"
-factory-boy = "*"
 
 [requires]
 python_version = "3.8"

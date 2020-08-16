@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.urls import path, include
 
-from drf_yasg.views import get_schema_view
-from drf_yasg import openapi
+from drf_yasg.views import get_schema_view  # type: ignore
+from drf_yasg import openapi  # type: ignore
 from rest_framework import permissions
 
 urlpatterns = [
@@ -25,7 +25,9 @@ urlpatterns = [
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="LASSI API", default_version="v1", description="LASSI API Documentation",
+        title="LASSI API",
+        default_version="v1",
+        description="LASSI API Documentation",
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),

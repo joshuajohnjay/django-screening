@@ -25,7 +25,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "name",
-                    models.CharField(max_length=100, verbose_name="agile value name"),
+                    models.CharField(
+                        max_length=100, verbose_name="agile value name"
+                    ),
                 ),
                 (
                     "description",
@@ -49,7 +51,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name_plural": "Agile Values",},
+            options={"verbose_name_plural": "Agile Values"},
         ),
         migrations.CreateModel(
             name="Principle",
@@ -65,7 +67,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "name",
-                    models.CharField(max_length=100, verbose_name="principle name"),
+                    models.CharField(
+                        max_length=100, verbose_name="principle name"
+                    ),
                 ),
                 (
                     "description",
@@ -89,6 +93,6 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name_plural": "Principles",},
+            options={"verbose_name_plural": "Principles"},
         ),
     ]

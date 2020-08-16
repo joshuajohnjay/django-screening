@@ -1,4 +1,4 @@
-import factory.fuzzy
+import factory.fuzzy  # type: ignore
 
 from agile.models import Agile
 

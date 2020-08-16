@@ -21,6 +21,11 @@ pipenv install --dev
 pipenv run python manage.py loaddata agile/fixtures/fixtures.json
 ```
 
+A default admin user has been created:
+
+- **Username**: admin
+- **Password**: admin
+
 ### Running the server
 
 ```
