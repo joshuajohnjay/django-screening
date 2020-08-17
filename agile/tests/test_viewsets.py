@@ -55,10 +55,19 @@ class TestAgileViews:
         resp = client.get(url)
         assert resp.status_code == status.HTTP_200_OK  # nosec
 
-    def test_list_view(self, logged_in_client):
+    def test_get_value_filtered(self, logged_in_client):
         url = reverse("agile:agile-list")
-        resp = logged_in_client.get(url)
-        assert resp.status_code == status.HTTP_200_OK  # nosec
+        resp = logged_in_client.get(url, {"type": "value"})
+        values = resp.json()
+        for v in values:
+            assert v["type"] == "value"  # nosec
+
+    def test_get_principle_filtered(self, logged_in_client):
+        url = reverse("agile:agile-list")
+        resp = logged_in_client.get(url, {"type": "principle"})
+        values = resp.json()
+        for v in values:
+            assert v["type"] == "principle"  # nosec
 
     def test_get_view(self, logged_in_client, agile_value):
         url = self.get_detail_url(agile_value.id)
@@ -121,6 +130,16 @@ class TestAgileViews:
         assert resp.status_code == status.HTTP_403_FORBIDDEN  # nosec
 
     def test_put(self, logged_in_client, agile_value):
+        """Tests put request updates an instance."""
+        url = self.get_detail_url(agile_value.id)
+        payload = {"name": "New Name", "description": "New Description"}
+        resp = logged_in_client.put(url, payload)
+        assert resp.status_code == status.HTTP_200_OK  # nosec
+        agile_value = Agile.objects.get(id=resp.json()["id"])
+        assert agile_value.description == payload["description"]  # nosec
+        assert agile_value.name == payload["name"]  # nosec
+
+    def test_get_values(self, logged_in_client, agile_value):
         """Tests put request updates an instance."""
         url = self.get_detail_url(agile_value.id)
         payload = {"name": "New Name", "description": "New Description"}

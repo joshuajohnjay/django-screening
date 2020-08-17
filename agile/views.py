@@ -26,3 +26,4 @@ class AgileViewSet(viewsets.ModelViewSet):
     queryset = Agile.objects.all()
     serializer_class = AgileSerializer
     permission_classes = (IsAuthenticated,)
+    filterset_fields = ("type",)
