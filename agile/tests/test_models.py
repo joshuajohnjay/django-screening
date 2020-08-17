@@ -19,3 +19,9 @@ class AgileMethodTests(TestCase):
     def test_get_or_none(self):
         """Tests expects none."""
         self.assertIsNone(Agile.objects.get_or_none(id=20))
+
+    def test_uuid_present(self):
+        """Tests expects none."""
+        agile = Agile.objects.all()
+        for a in agile:
+            assert a.uuid is not None  # nosec

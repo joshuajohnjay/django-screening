@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.query import QuerySet
 from django.utils.translation import ugettext_lazy as _
-
+import uuid
 
 class AgileManager(models.Manager):
     def get_or_none(self, **kwargs):
@@ -44,6 +44,8 @@ class Agile(models.Model):
     modified_date = models.DateTimeField(
         _("date last modified"), auto_now=True
     )
+
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
 
     objects = AgileManager()
 
